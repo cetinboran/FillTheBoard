@@ -44,10 +44,18 @@ def Passed(emptySquares, board , exPosition):
     for row in range(0, len(board), 1):
         for col in range(0, len(board), 1):
             if exPosition[0] == row and exPosition[1] == col:
-                if passedCount < 10:
-                    board[row][col] = "   " + f"0{passedCount}" + "   "
+                if BOARDLENGTH >= 10:
+                    if passedCount < 10:
+                        board[row][col] = "   " + f"000{passedCount}" + "   "
+                    elif passedCount >= 100:
+                        board[row][col] = "   " + f"0{passedCount}" + "   "
+                    else:
+                        board[row][col] = "   " + f"00{passedCount}" + "   "
                 else:
-                    board[row][col] = "   " + str(passedCount) + "   "
+                    if passedCount < 10:
+                        board[row][col] = "   " + f"0{passedCount}" + "   "
+                    else:
+                        board[row][col] = "   " + str(passedCount) + "   "
 
     passedCount += 1
     if len(emptySquares) != 1:
